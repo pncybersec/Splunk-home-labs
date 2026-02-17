@@ -1,41 +1,115 @@
-Splunk SOC Lab
+SOC Lab Report – Entry-Level Analyst Training
 
-I built these labs to learn real SOC skills. They show how I use Splunk to find and stop attacks.
-What's Here
+Analyst: Peter P. Nguyen
+Email: pncybersec@proton.me
+
+Portfolio: TryHackMe Labs
+
+Certifications: CompTIA Security+ (Active)
+
+Date: 02/17/2026
+Purpose: Demonstrate applied SOC skills using Splunk to detect, investigate, and alert on simulated threats in a controlled lab environment.
+
 1. PowerShell Monitoring Lab
 
-Spl: source="powershell_4688_events.csv" host="*" sourcetype="csv"
-Could also search for 4688 with "powershell"
-    Tracked PowerShell execution on Windows
+Scope: Monitored Windows PowerShell execution events to detect potentially malicious commands.
 
-    Made dashboards to spot suspicious activity
+Data Source:
 
-    Set up alerts for SOC analysts
+powershell_4688_events.csv
 
-2. Brute Force Attack Detection
+Windows Event ID 4688 (process creation events)
 
-Spl:source="bruteforce_auth_events.csv" host="*" sourcetype="csv" (status="failure" OR fail)
-Could also search for windows Event 4625
-    Simulated password guessing attacks
+Methodology:
 
-    Built searches to find attack patterns
+Ingested PowerShell logs into Splunk
 
-    Created alerts for too many failed logins
+Built dashboards to visualize execution patterns
 
-3. Phishing Email Analysis
-source="phishing_attack_logs.csv" host="*" sourcetype="csv" event_type="login_attempt"
-Could also search for the malicious domain
+Created correlation searches to flag unusual or suspicious commands
 
-    Analyzed fake phishing emails in a safe lab
+Findings:
 
-    Looked for suspicious links and attachments
+Detected abnormal PowerShell executions
 
-    Learned how to spot social engineering tricks
+Identified potential risk indicators (encoded commands, unexpected hosts, unusual execution times)
 
-Let's Connect
+Actions / Recommendations:
 
-I'm actively seeking an entry-level SOC analyst position, especially in overnight or shift roles where I can grow and contribute from day one.
+Alerts were configured for SOC analysts to review and escalate suspicious events
 
-Email: pncybersec@proton.me
-Portfolio: TryHackMe
-Certs: CompTIA Security+
+Documented procedures for triaging PowerShell alerts in a Tier-1 SOC environment
+
+2. Brute Force Attack Detection Lab
+
+Scope: Simulated authentication failures to practice detection of credential-based attacks.
+
+Data Source:
+
+bruteforce_auth_events.csv
+
+Windows Event ID 4625 (failed logon attempts)
+
+Methodology:
+
+Created searches for repeated failed logins
+
+Tuned alerts to trigger on thresholds indicating brute force activity
+
+Findings:
+
+Successfully detected simulated password-guessing attempts
+
+Patterns of repeated failed logins across multiple hosts were visualized on dashboards
+
+Actions / Recommendations:
+
+Alerts were generated for analyst investigation
+
+Recommendations included follow-up on targeted accounts and potential password resets
+
+3. Phishing Email Analysis Lab
+
+Scope: Analyze simulated phishing emails to detect social engineering threats.
+
+Data Source:
+
+phishing_attack_logs.csv
+
+Event type: login_attempt
+
+Malicious domains and sender addresses
+
+Methodology:
+
+Examined email headers, links, and attachments
+
+Mapped indicators of compromise (IOCs) to MITRE ATT&CK techniques
+
+Documented workflow for safe investigation
+
+Findings:
+
+Identified suspicious links and attachments
+
+Detected patterns indicative of phishing attempts
+
+Actions / Recommendations:
+
+Recommendations for reporting phishing incidents and escalating potential compromise
+
+Improved processes for end-user awareness and detection
+
+Conclusion
+
+These labs demonstrate applied SOC skills in:
+
+Log ingestion and monitoring
+
+Detection and triage of suspicious activity
+
+Alerting and dashboard creation
+
+Threat analysis using MITRE ATT&CK framework
+
+I am actively seeking an entry-level SOC analyst position, with flexibility for overnight and weekend shifts, to apply and grow these skills in a real-world environment.
